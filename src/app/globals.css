@@ -3,25 +3,67 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary-color: #ED1045;
+  --background-color: #141414;
+  --header-height: 60px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white rounded-lg border-none outline-none no-underline inline-block;
   }
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    background-color: var(--background-color);
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.content {
+  margin-top: var(--header-height);
+}
+
+.container {
+  width: 1200px;
+  max-width: calc(100% - 32px);
+}
+
+.header__toggle {
+  background-color: #000000;
+  animation: animateToTop linear 0.4s;
+}
+
+.hover-item:hover div img {
+  opacity: 0.5;
+}
+
+.hover-item:hover p {
+  color: var(--primary-color);
+}
+
+.slick-list {
+  margin: 0 -10px !important;
+}
+.slick-slide > div {
+  padding: 0 10px;
+}
+
+@keyframes animateToTop {
+  0% {
+      top: -60px;
+      opacity: 0;
+  }
+  100% {
+      top: 0px;
+      opacity: 1;
+  }
 }
